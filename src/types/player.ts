@@ -1,8 +1,8 @@
-import { FillerCard } from "./card";
+import type { FillerCard } from './card';
 
 export interface Player {
-    name: string;
-    points: number;
-    handCards: FillerCard;
-    playedCards: FillerCard;
+	name: string;
+	points: number;
+	handCards: FillerCard;
+	playedCards: FillerCard;
 }

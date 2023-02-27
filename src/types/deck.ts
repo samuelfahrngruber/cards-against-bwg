@@ -1,7 +1,7 @@
-import { FillerCard, PlaceholderCard } from "./card";
+import type { FillerCard, PlaceholderCard } from './card';
 
 export interface Deck {
-    name: string;
-    placeholderCards: PlaceholderCard[];
-    fillerCards: FillerCard[];
+	name: string;
+	placeholderCards: PlaceholderCard[];
+	fillerCards: FillerCard[];
 }
