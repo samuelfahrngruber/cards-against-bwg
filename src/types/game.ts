@@ -8,4 +8,5 @@ export interface Game {
 	currentPlaceholderCard: PlaceholderCard;
 	deck: Deck;
 	players: Record<string, Player>;
+	playerMaster: string;
 }

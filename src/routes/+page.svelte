@@ -1,2 +1,6 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import { auth } from '../business/auth';
+</script>
+
+<h1>The user is</h1>
+<pre>{JSON.stringify($auth, null, 2)}</pre>
