@@ -1,5 +1,5 @@
 <script>
-	import { nickname } from '../business/nickname';
+	import { nickname } from '../store/nickname';
 </script>
 
 <h1>The nickname is "{$nickname}"</h1>

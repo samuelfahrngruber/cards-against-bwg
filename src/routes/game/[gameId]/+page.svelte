@@ -1,5 +1,5 @@
 <script>
-	import { game } from '../../business/game';
+	import { game } from '../../../store/game';
 </script>
 
 <h1>The game is</h1>

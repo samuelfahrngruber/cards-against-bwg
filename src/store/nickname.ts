@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { getFirebaseUserInfo, updateFirebaseNickname } from './auth';
+import { getFirebaseUserInfo, updateFirebaseNickname } from '../business/auth';
 
 const createNickname = () => {
 	const nickname = writable<string>(

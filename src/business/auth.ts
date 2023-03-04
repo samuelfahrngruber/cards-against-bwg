@@ -9,7 +9,12 @@ const firebaseAuth = getAuth(firebaseApp);
 
 const getFirebaseUser = async () => (await signInAnonymously(firebaseAuth)).user;
 
-export const getFirebaseUserInfo = async () => {
+export interface FirebaseUserInfo {
+	id: string;
+	nickname: string;
+}
+
+export const getFirebaseUserInfo = async (): Promise<FirebaseUserInfo> => {
 	const user = await getFirebaseUser();
 	let nickname = user.displayName;
 	if (nickname === undefined || nickname === null) {
