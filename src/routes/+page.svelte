@@ -1,6 +1,5 @@
 <script>
-	import { auth } from '../business/auth';
+	import { nickname } from '../business/nickname';
 </script>
 
-<h1>The user is</h1>
-<pre>{JSON.stringify($auth, null, 2)}</pre>
+<h1>The nickname is "{$nickname}"</h1>

@@ -1,34 +1,28 @@
-import { getAuth, signInAnonymously, type User } from 'firebase/auth';
-import { derived, readable, writable, type Readable } from 'svelte/store';
+import { getAuth, signInAnonymously, updateProfile } from 'firebase/auth';
 import { firebaseApp } from './firebase';
 
-export type AuthStore = Readable<{ firebaseUser: User | undefined; nickname: string }> & {
-	setNickname: (nickname: string) => void;
-};
-
 const defaultUsernames = ['Nicer Dicer', 'Detlef D Soost'];
-const pickRandomDefaultName = () =>
+export const pickRandomDefaultName = () =>
 	defaultUsernames[Math.floor(Math.random() * defaultUsernames.length)];
 
 const firebaseAuth = getAuth(firebaseApp);
-const logIntoFirebase = async () => (await signInAnonymously(firebaseAuth)).user;
 
-const createAuth = (): AuthStore => {
-	const firebaseUser = readable<User | undefined>(undefined, (set) => {
-		logIntoFirebase().then((user) => set(user));
-	});
+const getFirebaseUser = async () => (await signInAnonymously(firebaseAuth)).user;
 
-	const nickname = writable<string>(pickRandomDefaultName());
-
-	const combined = derived([firebaseUser, nickname], ([firebaseUser, nickname]) => ({
-		firebaseUser,
-		nickname
-	}));
-
+export const getFirebaseUserInfo = async () => {
+	const user = await getFirebaseUser();
+	let nickname = user.displayName;
+	if (nickname === undefined || nickname === null) {
+		nickname = pickRandomDefaultName();
+		updateFirebaseNickname(nickname);
+	}
 	return {
-		subscribe: combined.subscribe,
-		setNickname: nickname.set
+		id: user.uid,
+		nickname
 	};
 };
 
-export const auth = createAuth();
+export const updateFirebaseNickname = async (nickname: string) => {
+	const user = await getFirebaseUser();
+	updateProfile(user, { displayName: nickname });
+};

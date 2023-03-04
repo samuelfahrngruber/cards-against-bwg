@@ -3,6 +3,6 @@ import type { FillerCard } from './card';
 export interface Player {
 	name: string;
 	points: number;
-	handCards: FillerCard;
-	playedCards: FillerCard;
+	handCards: FillerCard[];
+	playedCards: FillerCard[];
 }
