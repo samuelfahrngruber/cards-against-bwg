@@ -63,5 +63,5 @@ export const newGame = async (deck: Deck) => {
 		playerMaster: userInfo.id
 	};
 	const gameRef = await insertGame(game);
-	console.log(gameRef.id);
+	console.log(`Created new game ${gameRef.id}`);
 };

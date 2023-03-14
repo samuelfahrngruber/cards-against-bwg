@@ -10,7 +10,7 @@ const config = {
 	kit: {
 		// SPA - we use the static adapter
 		// https://kit.svelte.dev/docs/adapter-static
-		adapter: adapter({ fallback: "index.html" }),
+		adapter: adapter({ fallback: 'index.html' })
 	}
 };
 
