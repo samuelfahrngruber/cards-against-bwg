@@ -15,7 +15,8 @@ import type { Player } from '../types/player';
 import { getFirebaseUserInfo, type FirebaseUserInfo } from './auth';
 import { firebaseApp } from './firebase';
 
-const shuffled = <T>(arr: Array<T>): Array<T> => [...arr].sort(() => Math.random() - 0.5);
+const shuffled = <T>(arr: Array<T>): Array<T> =>
+	arr === undefined ? [] : [...arr].sort(() => Math.random() - 0.5);
 const shuffleDeck = (deck: Deck): Deck => ({
 	...deck,
 	placeholderCards: shuffled(deck.placeholderCards),
